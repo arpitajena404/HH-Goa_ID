@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
-import { Volume2, VolumeX, HelpCircle, ExternalLink, Flame } from 'lucide-react';
+import { Volume2, VolumeX, HelpCircle, ExternalLink, Sun, Moon } from 'lucide-react';
 import { soundManager } from '../utils/audio';
 
 interface NavbarProps {
   soundEnabled: boolean;
   setSoundEnabled: (val: boolean) => void;
   onOpenHowTo: () => void;
+  theme: 'light' | 'dark';
+  setTheme: (t: 'light' | 'dark') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   soundEnabled,
   setSoundEnabled,
   onOpenHowTo,
+  theme,
+  setTheme,
 }) => {
   useEffect(() => {
     const unsubscribe = soundManager.subscribe(() => {
@@ -32,8 +36,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  const isLight = theme === 'light';
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b-3 sm:border-b-4 border-black bg-[#064423]/95 backdrop-blur-md px-3 sm:px-4 lg:px-8 py-2.5 sm:py-3.5 shadow-lg">
+    <header className="sticky top-0 z-40 w-full border-b-3 sm:border-b-4 border-black bg-[#064423]/95 backdrop-blur-md px-3 sm:px-4 lg:px-8 py-2.5 sm:py-3.5 shadow-lg transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: 2:47 PM STUDIO & Brand */}
         <div className="flex items-center space-x-2 sm:space-x-3">
@@ -74,7 +80,29 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Right: Actions */}
-        <div className="flex items-center space-x-1.5 sm:space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-2.5">
+          {/* Theme Switcher Button */}
+          <button
+            onClick={() => {
+              soundManager.playClick();
+              setTheme(isLight ? 'dark' : 'light');
+            }}
+            className="flex items-center space-x-1 sm:space-x-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs font-mono font-bold bg-[#FFE600] text-black border-2 border-black pop-shadow hover:bg-yellow-300 transition cursor-pointer"
+            title={isLight ? 'Switch to Dark Jungle Theme' : 'Switch to Light Sand Theme'}
+          >
+            {isLight ? (
+              <>
+                <Sun className="w-3.5 h-3.5 text-amber-900 fill-amber-500" />
+                <span className="text-[11px] sm:text-xs font-black">Goa Sand</span>
+              </>
+            ) : (
+              <>
+                <Moon className="w-3.5 h-3.5 text-emerald-950 fill-emerald-900" />
+                <span className="text-[11px] sm:text-xs font-black">Goa Jungle</span>
+              </>
+            )}
+          </button>
+
           {/* Guide Button */}
           <button
             onClick={() => {
@@ -88,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="text-[11px] sm:text-xs">Guide</span>
           </button>
 
-          {/* Single Speaker Button */}
+          {/* Sound Toggle Button */}
           <button
             onClick={toggleAudio}
             className={`p-1.5 sm:p-2 rounded-xl border-2 border-black pop-shadow transition cursor-pointer flex items-center justify-center ${
@@ -105,14 +133,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </button>
 
+          {/* Official Link */}
           <a
             href="https://hhgoa.com/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundManager.playClick()}
-            className="hidden sm:flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-mono font-bold bg-[#FF007A] text-white border-2 border-black pop-shadow hover:bg-pink-600 transition"
+            className="hidden sm:flex items-center space-x-1 px-3 py-2 rounded-xl text-xs font-mono font-bold bg-[#FF007A] text-white border-2 border-black pop-shadow hover:bg-pink-600 transition"
           >
-            <Flame className="w-3.5 h-3.5 text-[#FFE600]" />
             <span>hhgoa.com</span>
             <ExternalLink className="w-3 h-3 ml-0.5" />
           </a>

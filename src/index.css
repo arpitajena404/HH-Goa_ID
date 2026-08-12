@@ -7,7 +7,8 @@
     --color-hh-yellow: #FFE600;
     --color-hh-pink: #FF007A;
     --color-hh-lime: #D4FF00;
-    --color-hh-sand: #FFFBF0;
+    --color-hh-sand: #FBF7EE;
+    --color-hh-sand-dark: #ECE3CF;
   }
 
   * {
@@ -15,19 +16,20 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  html, body, #root {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    position: relative;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--color-hh-green);
-    color: #FFFFFF;
+    background-color: var(--color-hh-sand);
+    color: #1A2E20;
     font-family: 'Outfit', sans-serif;
     min-height: 100vh;
-    background-image: radial-gradient(circle at 50% 0%, #0e8446 0%, #0a6c38 60%, #064423 100%);
+    overflow-x: clip;
+  }
+
+  #root {
+    min-height: 100vh;
   }
 
   button, a {
@@ -57,7 +59,7 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #064423;
+  background: #FBF7EE;
 }
 ::-webkit-scrollbar-thumb {
   background: #FFE600;
