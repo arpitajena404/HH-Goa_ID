@@ -59,9 +59,9 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Team Details */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         <div>
           <label className="block text-xs font-mono font-black text-[#FFE600] mb-1">
             <span className="flex items-center space-x-1">
@@ -74,7 +74,7 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
             value={team.teamName}
             onChange={(e) => setTeam((prev) => ({ ...prev, teamName: e.target.value }))}
             placeholder="e.g. ZeroLag Protocol"
-            className="w-full bg-[#064423] border-2 border-black focus:border-[#FFE600] rounded-xl px-3.5 py-2 text-sm text-white font-bold outline-none pop-shadow"
+            className="w-full bg-[#064423] border-2 border-black focus:border-[#FFE600] rounded-xl px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm text-white font-bold outline-none pop-shadow"
           />
         </div>
 
@@ -87,13 +87,13 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
             value={team.tagline}
             onChange={(e) => setTeam((prev) => ({ ...prev, tagline: e.target.value }))}
             placeholder="e.g. Heads down · Ship or Ship"
-            className="w-full bg-[#064423] border-2 border-black focus:border-[#FFE600] rounded-xl px-3.5 py-2 text-sm text-white outline-none font-mono pop-shadow"
+            className="w-full bg-[#064423] border-2 border-black focus:border-[#FFE600] rounded-xl px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm text-white outline-none font-mono pop-shadow"
           />
         </div>
       </div>
 
       {/* Member Cards Header */}
-      <div className="flex items-center justify-between pt-2">
+      <div className="flex items-center justify-between pt-1 sm:pt-2">
         <label className="text-xs font-mono font-black text-[#FFE600] flex items-center space-x-1.5">
           <Sparkles className="w-3.5 h-3.5 text-[#FF007A]" />
           <span>TEAMMATES ({team.members.length}/4)</span>
@@ -102,7 +102,7 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
           <button
             type="button"
             onClick={handleAddMember}
-            className="flex items-center space-x-1 px-3 py-1 rounded-xl text-xs font-mono font-black bg-[#FFE600] text-black border-2 border-black pop-shadow hover:bg-yellow-300 transition cursor-pointer"
+            className="flex items-center space-x-1 px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-mono font-black bg-[#FFE600] text-black border-2 border-black pop-shadow hover:bg-yellow-300 transition cursor-pointer"
           >
             <UserPlus className="w-3.5 h-3.5" />
             <span>Add Member</span>
@@ -111,11 +111,11 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
       </div>
 
       {/* Teammates List */}
-      <div className="space-y-3">
+      <div className="space-y-2.5 sm:space-y-3">
         {team.members.map((m, idx) => (
           <div
             key={m.id}
-            className="p-3.5 bg-[#064423] rounded-xl border-3 border-black pop-shadow space-y-3"
+            className="p-3 sm:p-3.5 bg-[#064423] rounded-xl border-2 sm:border-3 border-black pop-shadow space-y-2.5 sm:space-y-3"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono font-black text-[#FFE600]">
@@ -125,15 +125,15 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
                 <button
                   type="button"
                   onClick={() => handleRemoveMember(m.id)}
-                  className="text-red-400 hover:text-red-300 transition cursor-pointer"
+                  className="text-red-400 hover:text-red-300 transition cursor-pointer p-1"
                   title="Remove Teammate"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               )}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2">
               <input
                 type="text"
                 value={m.name}
@@ -181,48 +181,50 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
             </div>
 
             {/* Photo upload / sample for this member */}
-            <div className="flex items-center space-x-3 pt-1">
-              <input
-                type="file"
-                ref={(el) => {
-                  memberFileInputRefs.current[m.id] = el;
-                }}
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) handleMemberPhotoUpload(m.id, file);
-                }}
-                accept="image/*"
-                className="hidden"
-              />
+            <div className="flex items-center justify-between space-x-2 pt-1 flex-wrap gap-y-2">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="file"
+                  ref={(el) => {
+                    memberFileInputRefs.current[m.id] = el;
+                  }}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleMemberPhotoUpload(m.id, file);
+                  }}
+                  accept="image/*"
+                  className="hidden"
+                />
 
-              <button
-                type="button"
-                onClick={() => memberFileInputRefs.current[m.id]?.click()}
-                className="flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold bg-[#FFE600] text-black border-2 border-black pop-shadow cursor-pointer"
-              >
-                <Upload className="w-3 h-3 text-black" />
-                <span>Upload Photo</span>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => memberFileInputRefs.current[m.id]?.click()}
+                  className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-mono font-bold bg-[#FFE600] text-black border border-black sm:border-2 pop-shadow cursor-pointer"
+                >
+                  <Upload className="w-3 h-3 text-black" />
+                  <span>Photo</span>
+                </button>
 
-              <button
-                type="button"
-                onClick={() => {
-                  soundManager.playClick();
-                  const svg = generateSampleAvatarSvg(m.name, (idx * 90 + 40) % 360);
-                  setTeam((prev) => ({
-                    ...prev,
-                    members: prev.members.map((mem) =>
-                      mem.id === m.id ? { ...mem, photoUrl: svg } : mem
-                    ),
-                  }));
-                }}
-                className="text-xs font-mono text-[#FFE600] hover:text-white transition cursor-pointer"
-              >
-                Use Beach Avatar
-              </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    const svg = generateSampleAvatarSvg(m.name, (idx * 90 + 40) % 360);
+                    setTeam((prev) => ({
+                      ...prev,
+                      members: prev.members.map((mem) =>
+                        mem.id === m.id ? { ...mem, photoUrl: svg } : mem
+                      ),
+                    }));
+                  }}
+                  className="text-[11px] sm:text-xs font-mono text-[#FFE600] hover:text-white transition cursor-pointer"
+                >
+                  Beach Avatar
+                </button>
+              </div>
 
               {/* Quick zoom for member */}
-              <div className="flex-1 flex items-center space-x-2 justify-end">
+              <div className="flex items-center space-x-1.5">
                 <ZoomIn className="w-3 h-3 text-white" />
                 <input
                   type="range"
@@ -241,7 +243,7 @@ export const TeamForm: React.FC<TeamFormProps> = ({ team, setTeam }) => {
                       ),
                     }));
                   }}
-                  className="w-20"
+                  className="w-16 sm:w-20"
                 />
               </div>
             </div>

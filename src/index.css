@@ -12,15 +12,26 @@
 
   * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
   }
 
   body {
     background-color: var(--color-hh-green);
     color: #FFFFFF;
     font-family: 'Outfit', sans-serif;
-    overflow-x: hidden;
     min-height: 100vh;
     background-image: radial-gradient(circle at 50% 0%, #0e8446 0%, #0a6c38 60%, #064423 100%);
+  }
+
+  button, a {
+    touch-action: manipulation;
   }
 
   code, pre, .font-mono {

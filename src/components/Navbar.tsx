@@ -33,29 +33,29 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b-4 border-black bg-[#064423]/95 backdrop-blur-md px-4 lg:px-8 py-3.5 shadow-lg">
+    <header className="sticky top-0 z-40 w-full border-b-3 sm:border-b-4 border-black bg-[#064423]/95 backdrop-blur-md px-3 sm:px-4 lg:px-8 py-2.5 sm:py-3.5 shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: 2:47 PM STUDIO & Brand */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
           <a
             href="https://hhgoa.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-1.5 sm:space-x-2 group"
           >
-            <div className="px-2.5 py-1 bg-[#FFE600] border-2 border-black rounded-lg pop-shadow transform group-hover:-rotate-2 transition">
-              <span className="font-mono font-black text-xs text-black tracking-wider">
-                2:47 PM STUDIO
+            <div className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 bg-[#FFE600] border sm:border-2 border-black rounded-md sm:rounded-lg shadow-[2px_2px_0px_#000000] sm:pop-shadow transform group-hover:-rotate-2 transition shrink-0">
+              <span className="font-mono font-black text-[9px] sm:text-xs text-black tracking-normal sm:tracking-wider whitespace-nowrap">
+                2:47 PM<span className="hidden sm:inline"> STUDIO</span>
               </span>
             </div>
-            <div className="flex items-center space-x-1 pl-1">
-              <span className="font-serif-hh font-black text-xl text-[#FFE600] tracking-wide">
+            <div className="flex items-center space-x-1 pl-0.5 sm:pl-1">
+              <span className="font-serif-hh font-black text-lg sm:text-xl text-[#FFE600] tracking-wide">
                 HACKER
               </span>
-              <span className="font-goa-hindi font-black text-lg text-[#FF007A] bg-[#FFE600] px-1 rounded border border-black transform rotate-3">
+              <span className="font-goa-hindi font-black text-base sm:text-lg text-[#FF007A] bg-[#FFE600] px-1 rounded border border-black transform rotate-3">
                 गोवा
               </span>
-              <span className="font-serif-hh font-black text-xl text-[#FFE600] tracking-wide">
+              <span className="font-serif-hh font-black text-lg sm:text-xl text-[#FFE600] tracking-wide hidden xs:inline">
                 HOUSE
               </span>
             </div>
@@ -74,24 +74,24 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Right: Actions */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-3">
           {/* Guide Button */}
           <button
             onClick={() => {
               soundManager.playClick();
               onOpenHowTo();
             }}
-            className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-[#FFE600] text-black border-2 border-black pop-shadow hover:bg-yellow-300 transition cursor-pointer"
+            className="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-mono font-bold bg-[#FFE600] text-black border-2 border-black pop-shadow hover:bg-yellow-300 transition cursor-pointer"
             title="Shortlisting Task Submission Guide"
           >
-            <HelpCircle className="w-4 h-4 text-black" />
-            <span className="hidden sm:inline">How To Post</span>
+            <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+            <span className="text-[11px] sm:text-xs">Guide</span>
           </button>
 
           {/* Single Speaker Button */}
           <button
             onClick={toggleAudio}
-            className={`p-2 rounded-xl border-2 border-black pop-shadow transition cursor-pointer flex items-center justify-center ${
+            className={`p-1.5 sm:p-2 rounded-xl border-2 border-black pop-shadow transition cursor-pointer flex items-center justify-center ${
               soundEnabled
                 ? 'bg-[#D4FF00] text-black hover:bg-lime-300'
                 : 'bg-[#085830] text-slate-300 hover:bg-[#0a6c38]'
@@ -99,9 +99,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             title={soundEnabled ? 'Click to Pause Music' : 'Click to Play Music'}
           >
             {soundEnabled ? (
-              <Volume2 className="w-4 h-4 text-black" />
+              <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
             ) : (
-              <VolumeX className="w-4 h-4 text-slate-200" />
+              <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-200" />
             )}
           </button>
 

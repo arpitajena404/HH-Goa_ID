@@ -120,49 +120,49 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
   return (
     <div className="flex flex-col items-center justify-center w-full">
       {/* Top Preview Controls */}
-      <div className="w-full flex items-center justify-between mb-3 px-1">
-        <div className="flex items-center space-x-2">
-          <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-mono font-black bg-[#FFE600] text-black border-2 border-black pop-shadow">
-            <Eye className="w-3.5 h-3.5 mr-1" />
-            LIVE 2K HD PREVIEW
+      <div className="w-full flex items-center justify-between mb-2 sm:mb-3 px-0.5 sm:px-1">
+        <div className="flex items-center space-x-1.5 sm:space-x-2">
+          <span className="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono font-black bg-[#FFE600] text-black border-2 border-black pop-shadow">
+            <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1" />
+            <span>LIVE 2K HD</span>
           </span>
           {isRendering && (
-            <RefreshCw className="w-3.5 h-3.5 text-[#FFE600] animate-spin" />
+            <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE600] animate-spin" />
           )}
         </div>
 
         {/* PFP Shape Toggle */}
         {mode === 'pfp' && (
-          <div className="flex items-center space-x-1.5 p-1 bg-[#064423] rounded-xl border-2 border-black pop-shadow">
+          <div className="flex items-center space-x-1 sm:space-x-1.5 p-0.5 sm:p-1 bg-[#064423] rounded-xl border-2 border-black pop-shadow">
             <button
               onClick={() => {
                 soundManager.playClick();
                 setIsCircularMask(false);
               }}
-              className={`px-2.5 py-1 rounded-lg flex items-center space-x-1 text-xs font-mono font-bold transition cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg flex items-center space-x-1 text-[10px] sm:text-xs font-mono font-bold transition cursor-pointer ${
                 !isCircularMask
                   ? 'bg-[#FFE600] text-black border border-black'
                   : 'text-slate-300 hover:text-white'
               }`}
               title="Square Frame"
             >
-              <Square className="w-3.5 h-3.5" />
-              <span className="text-[11px]">Square</span>
+              <Square className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <span>Square</span>
             </button>
             <button
               onClick={() => {
                 soundManager.playClick();
                 setIsCircularMask(true);
               }}
-              className={`px-2.5 py-1 rounded-lg flex items-center space-x-1 text-xs font-mono font-bold transition cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg flex items-center space-x-1 text-[10px] sm:text-xs font-mono font-bold transition cursor-pointer ${
                 isCircularMask
                   ? 'bg-[#FFE600] text-black border border-black'
                   : 'text-slate-300 hover:text-white'
               }`}
               title="Circular Avatar"
             >
-              <Circle className="w-3.5 h-3.5" />
-              <span className="text-[11px]">Circle</span>
+              <Circle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <span>Circle</span>
             </button>
           </div>
         )}
@@ -173,10 +173,10 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
         ref={cardContainerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative group cursor-crosshair w-full flex items-center justify-center p-2 rounded-2xl transition-transform duration-100"
+        className="relative group cursor-crosshair w-full flex items-center justify-center p-1 sm:p-2 rounded-2xl transition-transform duration-100"
       >
         <div
-          className="relative rounded-2xl overflow-hidden pop-shadow-lg transition-all duration-150 border-4 border-black bg-[#064423]"
+          className="relative rounded-2xl overflow-hidden pop-shadow-lg transition-all duration-150 border-3 sm:border-4 border-black bg-[#064423]"
           style={{
             transform: tiltStyle.transform,
           }}
@@ -184,7 +184,7 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
           {/* Main Canvas */}
           <canvas
             ref={canvasRef}
-            className={`block max-h-[560px] max-w-full object-contain ${
+            className={`block max-h-[380px] sm:max-h-[560px] max-w-full object-contain ${
               isCircularMask && mode === 'pfp' ? 'rounded-full' : 'rounded-xl'
             }`}
           />
@@ -200,9 +200,10 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
         </div>
       </div>
 
-      <p className="text-xs font-mono font-bold text-[#FFE600] mt-3 flex items-center space-x-1.5 bg-[#064423] px-3 py-1 rounded-full border border-black pop-shadow">
-        <Sparkles className="w-3.5 h-3.5 text-[#FF007A]" />
-        <span>Move mouse over card for 3D tropical beach sheen</span>
+      <p className="text-[10px] sm:text-xs font-mono font-bold text-[#FFE600] mt-2 sm:mt-3 flex items-center space-x-1.5 bg-[#064423] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-black pop-shadow">
+        <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FF007A]" />
+        <span className="hidden sm:inline">Move mouse over card for 3D tropical beach sheen</span>
+        <span className="sm:hidden">Official Hacker House Goa 2026 Pass</span>
       </p>
     </div>
   );

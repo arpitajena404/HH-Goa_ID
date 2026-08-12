@@ -120,44 +120,44 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
   };
 
   return (
-    <div className="w-full space-y-3 pt-2">
+    <div className="w-full space-y-2.5 sm:space-y-3 pt-1 sm:pt-2">
       {/* 1-Click Action Buttons with Neo-Brutalist Pop Shadows */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
         {/* 1-Click Download High-Res */}
         <button
           onClick={handleDownload}
-          className="w-full flex items-center justify-center space-x-2 py-3.5 px-5 rounded-xl font-display font-black text-sm text-black bg-[#FFE600] hover:bg-yellow-300 transition-all border-3 border-black pop-shadow active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer"
+          className="w-full flex items-center justify-center space-x-2 py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl font-display font-black text-xs sm:text-sm text-black bg-[#FFE600] hover:bg-yellow-300 transition-all border-2 sm:border-3 border-black pop-shadow active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer"
         >
-          <Download className="w-5 h-5" />
+          <Download className="w-4 h-4 sm:w-5 sm:h-5" />
           <span>1-CLICK DOWNLOAD (2K HD)</span>
         </button>
 
         {/* 1-Click Share to X */}
         <button
           onClick={handleShareToX}
-          className="w-full flex items-center justify-center space-x-2 py-3.5 px-5 rounded-xl font-display font-black text-sm text-white bg-[#FF007A] hover:bg-pink-600 transition-all border-3 border-black pop-shadow active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer"
+          className="w-full flex items-center justify-center space-x-2 py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl font-display font-black text-xs sm:text-sm text-white bg-[#FF007A] hover:bg-pink-600 transition-all border-2 sm:border-3 border-black pop-shadow active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer"
         >
-          <XTwitterIcon className="w-5 h-5 fill-current" />
+          <XTwitterIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
           <span>SHARE TO X (#FrameInGoa)</span>
         </button>
       </div>
 
       {/* Secondary Fast Actions */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+      <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5">
         {/* Copy Image */}
         <button
           onClick={handleCopyImage}
-          className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-mono font-black bg-[#064423] text-white hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
+          className="flex items-center justify-center space-x-1 sm:space-x-1.5 py-2 sm:py-2.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-xs font-mono font-black bg-[#064423] text-white hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
         >
           {copiedImage ? (
             <>
-              <Check className="w-4 h-4 text-[#FFE600]" />
-              <span className="text-[#FFE600]">Copied to Clipboard!</span>
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE600] shrink-0" />
+              <span className="text-[#FFE600] truncate">Copied!</span>
             </>
           ) : (
             <>
-              <FileImage className="w-4 h-4 text-[#FFE600]" />
-              <span>Copy Image</span>
+              <FileImage className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE600] shrink-0" />
+              <span className="truncate">Copy Image</span>
             </>
           )}
         </button>
@@ -165,17 +165,17 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
         {/* Copy Caption */}
         <button
           onClick={handleCopyCaption}
-          className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-mono font-black bg-[#064423] text-white hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
+          className="flex items-center justify-center space-x-1 sm:space-x-1.5 py-2 sm:py-2.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-xs font-mono font-black bg-[#064423] text-white hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
         >
           {copiedCaption ? (
             <>
-              <Check className="w-4 h-4 text-[#D4FF00]" />
-              <span className="text-[#D4FF00]">Caption Copied!</span>
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4FF00] shrink-0" />
+              <span className="text-[#D4FF00] truncate">Copied!</span>
             </>
           ) : (
             <>
-              <Copy className="w-4 h-4 text-[#D4FF00]" />
-              <span>Copy Post Text</span>
+              <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4FF00] shrink-0" />
+              <span className="truncate">Post Text</span>
             </>
           )}
         </button>
@@ -186,10 +186,10 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
             soundManager.playClick();
             onOpenHowTo();
           }}
-          className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-xs font-mono font-black bg-[#064423] text-[#FFE600] hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
+          className="flex items-center justify-center space-x-1 sm:space-x-1.5 py-2 sm:py-2.5 px-1 sm:px-3 rounded-xl text-[10px] sm:text-xs font-mono font-black bg-[#064423] text-[#FFE600] hover:bg-[#09572e] border-2 border-black pop-shadow transition cursor-pointer"
         >
-          <Sparkles className="w-4 h-4 text-[#FF007A]" />
-          <span>Task #1 Guide</span>
+          <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF007A] shrink-0" />
+          <span className="truncate">Guide</span>
         </button>
       </div>
     </div>

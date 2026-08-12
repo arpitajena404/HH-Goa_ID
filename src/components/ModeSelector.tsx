@@ -33,8 +33,50 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ mode, setMode }) => 
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto mb-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 p-2 bg-[#064423] rounded-2xl border-4 border-black pop-shadow-lg">
+    <div className="w-full max-w-4xl mx-auto mb-5 sm:mb-8">
+      {/* Mobile Compact 3-Tab Segmented Selector (< md) */}
+      <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-[#064423] rounded-2xl border-3 border-black pop-shadow md:hidden">
+        {modes.map((m) => {
+          const isActive = mode === m.id;
+          const shortLabels: Record<AppMode, string> = {
+            pfp: 'PFP Frame',
+            id_card: 'Builder ID',
+            team_pass: 'Squad Pass',
+          };
+          return (
+            <button
+              key={m.id}
+              onClick={() => {
+                soundManager.playClick();
+                setMode(m.id);
+              }}
+              className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-center transition cursor-pointer border-2 ${
+                isActive
+                  ? 'bg-[#FFE600] text-black border-black pop-shadow font-black'
+                  : 'bg-[#0a6c38] text-slate-200 border-transparent hover:bg-[#0c7840]'
+              }`}
+            >
+              <div
+                className={`w-7 h-7 rounded-md flex items-center justify-center mb-1 border ${
+                  isActive
+                    ? 'bg-[#FF007A] text-white border-black pop-shadow'
+                    : 'bg-[#064423] text-[#FFE600] border-black/50'
+                }`}
+              >
+                {React.cloneElement(m.icon as React.ReactElement<{ className?: string }>, {
+                  className: 'w-3.5 h-3.5',
+                })}
+              </div>
+              <span className={`text-[11px] font-display font-black leading-tight truncate w-full ${isActive ? 'text-black' : 'text-slate-100'}`}>
+                {shortLabels[m.id]}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Desktop / Tablet Rich Cards (md: and up) */}
+      <div className="hidden md:grid md:grid-cols-3 gap-3.5 p-2 bg-[#064423] rounded-2xl border-4 border-black pop-shadow-lg">
         {modes.map((m) => {
           const isActive = mode === m.id;
           return (
