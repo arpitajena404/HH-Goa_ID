@@ -10,6 +10,7 @@ import { TeamForm } from './components/TeamForm';
 import { CardPreview } from './components/CardPreview';
 import { ActionToolbar } from './components/ActionToolbar';
 import { HowToModal } from './components/HowToModal';
+import { soundManager } from './utils/audio';
 import { ExternalLink } from 'lucide-react';
 import './App.css';
 
@@ -86,6 +87,13 @@ export function App() {
       builderClass: randomClass,
       idNumber: randomId,
     }));
+
+    // Start background music by default
+    soundManager.startMusic();
+    const unsubscribe = soundManager.subscribe(() => {
+      setSoundEnabled(soundManager.getIsPlaying());
+    });
+    return unsubscribe;
   }, []);
 
   return (

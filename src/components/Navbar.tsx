@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Volume2, VolumeX, HelpCircle, ExternalLink, Flame } from 'lucide-react';
 import { soundManager } from '../utils/audio';
 
@@ -13,11 +13,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   setSoundEnabled,
   onOpenHowTo,
 }) => {
-  const toggleSound = () => {
-    const next = !soundEnabled;
-    setSoundEnabled(next);
-    soundManager.enabled = next;
-    if (next) soundManager.playToggle();
+  useEffect(() => {
+    const unsubscribe = soundManager.subscribe(() => {
+      setSoundEnabled(soundManager.getIsPlaying());
+    });
+    return unsubscribe;
+  }, [setSoundEnabled]);
+
+  const toggleAudio = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (soundManager.getIsPlaying()) {
+      soundManager.stopMusic();
+      setSoundEnabled(false);
+    } else {
+      soundManager.startMusic();
+      setSoundEnabled(true);
+    }
   };
 
   return (
@@ -63,6 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right: Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Guide Button */}
           <button
             onClick={() => {
               soundManager.playClick();
@@ -75,15 +88,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="hidden sm:inline">How To Post</span>
           </button>
 
+          {/* Single Speaker Button */}
           <button
-            onClick={toggleSound}
-            className="p-2 rounded-xl text-black bg-[#D4FF00] border-2 border-black pop-shadow hover:bg-lime-300 transition cursor-pointer"
-            title={soundEnabled ? 'Mute Sound FX' : 'Enable Sound FX'}
+            onClick={toggleAudio}
+            className={`p-2 rounded-xl border-2 border-black pop-shadow transition cursor-pointer flex items-center justify-center ${
+              soundEnabled
+                ? 'bg-[#D4FF00] text-black hover:bg-lime-300'
+                : 'bg-[#085830] text-slate-300 hover:bg-[#0a6c38]'
+            }`}
+            title={soundEnabled ? 'Click to Pause Music' : 'Click to Play Music'}
           >
             {soundEnabled ? (
               <Volume2 className="w-4 h-4 text-black" />
             ) : (
-              <VolumeX className="w-4 h-4 text-slate-700" />
+              <VolumeX className="w-4 h-4 text-slate-200" />
             )}
           </button>
 
