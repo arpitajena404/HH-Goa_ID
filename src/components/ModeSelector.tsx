@@ -19,9 +19,9 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ mode, setMode }) => 
     {
       id: 'id_card',
       title: 'Format B: Builder ID Card',
-      subtitle: 'Official Event Resident Pass',
+      subtitle: 'Event Resident Pass',
       icon: <CreditCard className="w-5 h-5" />,
-      badge: 'OFFICIAL PASS',
+      badge: 'BUILDER PASS',
     },
     {
       id: 'team_pass',
@@ -53,14 +53,14 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ mode, setMode }) => 
               className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-center transition cursor-pointer border-2 ${
                 isActive
                   ? 'bg-[#FFE600] text-black border-black pop-shadow font-black'
-                  : 'bg-[#0a6c38]/70 text-slate-200 border-transparent hover:bg-[#0c7840]'
+                  : 'bg-[#0a6c38] text-slate-100 border-black/80 hover:border-black hover:bg-[#0c7840]'
               }`}
             >
               <div
-                className={`w-7 h-7 rounded-md flex items-center justify-center mb-1 border ${
+                className={`w-7 h-7 rounded-md flex items-center justify-center mb-1 border-2 border-black ${
                   isActive
-                    ? 'bg-[#FF007A] text-white border-black pop-shadow'
-                    : 'bg-[#064423] text-[#FFE600] border-black/50'
+                    ? 'bg-[#FF007A] text-white pop-shadow'
+                    : 'bg-[#064423] text-[#FFE600]'
                 }`}
               >
                 {React.cloneElement(m.icon as React.ReactElement<{ className?: string }>, {
@@ -75,8 +75,8 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ mode, setMode }) => 
         })}
       </div>
 
-      {/* Desktop / Tablet Rich Cards (md: and up) */}
-      <div className="hidden md:grid md:grid-cols-3 gap-3.5 p-2.5 bg-[#064423]/85 backdrop-blur-xl rounded-2xl border-4 border-black pop-shadow-lg">
+      {/* Desktop / Tablet Rich Cards (md: and up) with prominent borders on non-selected buttons */}
+      <div className="hidden md:grid md:grid-cols-3 gap-3.5 p-3 pt-4 bg-[#064423]/85 backdrop-blur-xl rounded-2xl border-4 border-black pop-shadow-lg">
         {modes.map((m) => {
           const isActive = mode === m.id;
           return (
@@ -86,36 +86,36 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({ mode, setMode }) => 
                 soundManager.playClick();
                 setMode(m.id);
               }}
-              className={`relative flex items-center space-x-3.5 p-4 rounded-xl text-left transition-all duration-150 cursor-pointer border-3 ${
+              className={`relative flex items-center space-x-3.5 p-4 rounded-xl text-left transition-all duration-150 cursor-pointer border-3 border-black ${
                 isActive
-                  ? 'bg-[#FFE600] text-black border-black pop-shadow font-bold'
-                  : 'bg-[#0a6c38]/60 backdrop-blur-sm text-white border-transparent hover:border-black/50 hover:bg-[#0c7840]/80'
+                  ? 'bg-[#FFE600] text-black pop-shadow font-bold'
+                  : 'bg-[#0a6c38] text-white shadow-[3px_3px_0px_#000000] hover:bg-[#0d7d43] hover:shadow-[4px_4px_0px_#000000] hover:-translate-y-0.5'
               }`}
             >
               <div
                 className={`w-11 h-11 rounded-lg flex items-center justify-center border-2 border-black shrink-0 ${
                   isActive
                     ? 'bg-[#FF007A] text-white pop-shadow'
-                    : 'bg-[#064423] text-[#FFE600]'
+                    : 'bg-[#064423] text-[#FFE600] shadow-[2px_2px_0px_#000000]'
                 }`}
               >
                 {m.icon}
               </div>
 
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 pr-2">
                 <div className="flex items-center space-x-2">
                   <span className={`text-sm font-display font-black truncate ${isActive ? 'text-black' : 'text-[#FFE600]'}`}>
                     {m.title}
                   </span>
                 </div>
-                <p className={`text-xs truncate ${isActive ? 'text-slate-800' : 'text-slate-200'}`}>
+                <p className={`text-xs truncate ${isActive ? 'text-slate-900 font-medium' : 'text-slate-200'}`}>
                   {m.subtitle}
                 </p>
               </div>
 
               {m.badge && (
                 <span
-                  className={`absolute top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-black tracking-wider border border-black ${
+                  className={`absolute -top-2.5 right-3 px-2 py-0.5 rounded-md text-[9px] font-mono font-black tracking-wider border-2 border-black shadow-[2px_2px_0px_#000000] z-10 ${
                     isActive
                       ? 'bg-[#FF007A] text-white'
                       : 'bg-[#FFE600] text-black'

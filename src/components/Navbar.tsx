@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden md:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0a6c38] border-2 border-black pop-shadow">
           <span className="w-2.5 h-2.5 rounded-full bg-[#FFE600] animate-ping"></span>
           <span className="text-xs font-mono font-bold text-[#FFE600]">
-            OFFICIAL #FrameInGoa GENERATOR
+            #FrameInGoa GENERATOR
           </span>
           <span className="px-1.5 py-0.2 bg-[#FF007A] text-white text-[10px] font-mono font-black rounded border border-black">
             TASK #1

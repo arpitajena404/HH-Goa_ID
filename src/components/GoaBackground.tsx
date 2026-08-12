@@ -27,14 +27,14 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
             }}
           />
 
-          {/* RADIANT CENTRAL GOA SUN EFFECT (Enhanced & Glowing in the middle) */}
+          {/* RADIANT CENTRAL GOA SUN EFFECT with smooth breathing pulse animation */}
           <div
-            className="absolute top-12 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] h-[550px] sm:h-[750px] pointer-events-none"
+            className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] h-[550px] sm:h-[750px] pointer-events-none animate-sun-pulse"
             style={{
               background: `
-                radial-gradient(circle at 50% 30%, rgba(255, 230, 0, 0.45) 0%, rgba(255, 184, 0, 0.28) 40%, rgba(255, 130, 0, 0.12) 65%, transparent 85%)
+                radial-gradient(circle at 50% 30%, rgba(255, 230, 0, 0.50) 0%, rgba(255, 184, 0, 0.32) 40%, rgba(255, 130, 0, 0.15) 65%, transparent 85%)
               `,
-              filter: 'blur(45px)',
+              filter: 'blur(48px)',
             }}
           />
 
@@ -60,7 +60,13 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
             </defs>
           </svg>
 
-          {/* Delicate Goa Coastal Waves / Topography Lines (Translucent) */}
+          {/* Floating Subtle Ambient Sun Motes */}
+          <div className="absolute top-[40%] left-[25%] w-3 h-3 rounded-full bg-[#FFE600] blur-[1px] animate-particle-1" />
+          <div className="absolute top-[50%] left-[70%] w-2.5 h-2.5 rounded-full bg-[#FF007A] blur-[1px] animate-particle-2" />
+          <div className="absolute top-[60%] left-[45%] w-3.5 h-3.5 rounded-full bg-[#FFE600] blur-[1px] animate-particle-3" />
+          <div className="absolute top-[35%] left-[80%] w-2 h-2 rounded-full bg-[#D4FF00] blur-[1px] animate-particle-4" />
+
+          {/* Delicate Goa Coastal Waves / Topography Lines */}
           <svg
             className="absolute inset-0 w-full h-full opacity-20"
             xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +117,8 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
         </>
       )}
 
-      {/* 2. Left Translucent Coconut Palm Trees (Soft Tropical Atmospheric Layer) */}
-      <div className="absolute top-0 left-0 w-[140px] sm:w-[220px] lg:w-[320px] h-full pointer-events-none opacity-30 sm:opacity-40 transform -translate-x-2 sm:translate-x-0 transition-opacity">
+      {/* 2. Left Translucent Coconut Palm Trees with gentle animated breeze sway */}
+      <div className="absolute top-0 left-0 w-[140px] sm:w-[220px] lg:w-[320px] h-full pointer-events-none opacity-30 sm:opacity-40 transform -translate-x-2 sm:translate-x-0 transition-opacity animate-palm-left">
         <svg
           viewBox="0 0 320 800"
           className="w-full h-full"
@@ -143,9 +149,8 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
             />
           ))}
 
-          {/* Left Palm Leaves Crown (Translucent Layered Fronds) */}
+          {/* Left Palm Leaves Crown */}
           <g transform="translate(70, 120)">
-            {/* Frond 1 - Top Left */}
             <path
               d="M 0,0 C -50,-60 -110,-70 -160,-40 C -120,-10 -60,10 0,0"
               fill="rgba(10, 136, 68, 0.65)"
@@ -157,44 +162,36 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
               stroke="rgba(6, 68, 35, 0.4)"
               strokeWidth="1.2"
             />
-
-            {/* Frond 2 - Upper Arc */}
             <path
               d="M 0,0 C -20,-90 40,-130 90,-110 C 60,-60 20,-20 0,0"
               fill="rgba(16, 176, 88, 0.7)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 3 - Right Arch */}
             <path
               d="M 0,0 C 50,-80 130,-70 170,-20 C 120,0 50,10 0,0"
               fill="rgba(14, 160, 80, 0.65)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 4 - Far Right Droop */}
             <path
               d="M 0,0 C 70,-40 140,20 160,80 C 110,60 50,30 0,0"
               fill="rgba(8, 112, 56, 0.6)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 5 - Far Left Droop */}
             <path
               d="M 0,0 C -70,-30 -130,20 -150,80 C -100,55 -50,25 0,0"
               fill="rgba(8, 112, 56, 0.6)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 6 - Center Top Highlight */}
             <path
               d="M 0,0 C 10,-80 80,-90 120,-60 C 80,-30 30,-10 0,0"
               fill="rgba(20, 196, 100, 0.75)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-
-            {/* Coconuts Cluster */}
             <circle cx="-6" cy="10" r="10" fill="rgba(153, 101, 21, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />
             <circle cx="8" cy="14" r="9" fill="rgba(128, 80, 16, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />
             <circle cx="2" cy="22" r="8.5" fill="rgba(160, 112, 32, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />
@@ -238,8 +235,8 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
         </svg>
       </div>
 
-      {/* 3. Right Translucent Coconut Palm Trees */}
-      <div className="absolute top-0 right-0 w-[140px] sm:w-[220px] lg:w-[320px] h-full pointer-events-none opacity-30 sm:opacity-40 transform translate-x-2 sm:translate-x-0 transition-opacity">
+      {/* 3. Right Translucent Coconut Palm Trees with gentle animated breeze sway */}
+      <div className="absolute top-0 right-0 w-[140px] sm:w-[220px] lg:w-[320px] h-full pointer-events-none opacity-30 sm:opacity-40 transform translate-x-2 sm:translate-x-0 transition-opacity animate-palm-right">
         <svg
           viewBox="0 0 320 800"
           className="w-full h-full"
@@ -272,50 +269,42 @@ export const GoaBackground: React.FC<GoaBackgroundProps> = ({ theme = 'light' })
 
           {/* Right Palm Leaves Crown */}
           <g transform="translate(250, 120)">
-            {/* Frond 1 - Top Right */}
             <path
               d="M 0,0 C 50,-60 110,-70 160,-40 C 120,-10 60,10 0,0"
               fill="rgba(10, 136, 68, 0.65)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 2 - Upper Arc Left */}
             <path
               d="M 0,0 C 20,-90 -40,-130 -90,-110 C -60,-60 -20,-20 0,0"
               fill="rgba(16, 176, 88, 0.7)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 3 - Left Arch */}
             <path
               d="M 0,0 C -50,-80 -130,-70 -170,-20 C -120,0 -50,10 0,0"
               fill="rgba(14, 160, 80, 0.65)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 4 - Far Left Droop */}
             <path
               d="M 0,0 C -70,-40 -140,20 -160,80 C -110,60 -50,30 0,0"
               fill="rgba(8, 112, 56, 0.6)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 5 - Far Right Droop */}
             <path
               d="M 0,0 C 70,-30 130,20 150,80 C 100,55 50,25 0,0"
               fill="rgba(8, 112, 56, 0.6)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-            {/* Frond 6 - Center Highlight */}
             <path
               d="M 0,0 C -10,-80 -80,-90 -120,-60 C -80,-30 -30,-10 0,0"
               fill="rgba(20, 196, 100, 0.75)"
               stroke="rgba(6, 68, 35, 0.5)"
               strokeWidth="1.5"
             />
-
-            {/* Coconuts Cluster */}
             <circle cx="6" cy="10" r="10" fill="rgba(153, 101, 21, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />
             <circle cx="-8" cy="14" r="9" fill="rgba(128, 80, 16, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />
             <circle cx="-2" cy="22" r="8.5" fill="rgba(160, 112, 32, 0.6)" stroke="rgba(6, 68, 35, 0.5)" strokeWidth="1.2" />

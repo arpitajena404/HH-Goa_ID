@@ -20,9 +20,6 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
           <Palette className="w-4 h-4 text-[#FFE600]" />
           <span>GOA COLOR PALETTE</span>
         </label>
-        <span className="text-xs font-mono font-bold text-white bg-[#064423] px-2 py-0.5 rounded border border-black">
-          {selectedPreset.name}
-        </span>
       </div>
 
       <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5">

@@ -3,7 +3,7 @@ import type { FramePreset, PhotoFilter } from '../types';
 export const FRAME_PRESETS: FramePreset[] = [
   {
     id: 'hh_emerald',
-    name: 'HH Goa Official',
+    name: 'HH Goa Classic',
     subtitle: 'Emerald Green · Yellow · Hot Pink',
     themeColor: '#FFE600', // Sunshine Yellow
     accentColor: '#FF007A', // Goa Hot Pink

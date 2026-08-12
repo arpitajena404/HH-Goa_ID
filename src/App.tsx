@@ -131,17 +131,19 @@ export function App() {
           {/* Big Iconic Logo Heading with warm center glow aura */}
           <div className="relative flex items-center justify-center space-x-1.5 sm:space-x-4 flex-wrap py-1 sm:py-2">
             <span
-              className={`font-serif-hh font-black text-3xl sm:text-7xl tracking-tight transition-colors ${
+              className={`font-serif-hh font-black text-3xl sm:text-7xl tracking-tight transition-colors animate-hacker-slide ${
                 isLight ? 'text-[#064423] drop-shadow-sm' : 'text-[#FFE600] drop-shadow-md'
               }`}
             >
               HACKER
             </span>
-            <span className="font-goa-hindi font-black text-2xl sm:text-6xl text-[#FF007A] bg-[#FFE600] px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg sm:rounded-xl border-2 sm:border-3 border-black pop-shadow transform -rotate-3 hover:rotate-0 transition">
-              गोवा
+            <span className="inline-block animate-coconut-drop">
+              <span className="inline-block font-goa-hindi font-black text-2xl sm:text-6xl text-[#FF007A] bg-[#FFE600] px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg sm:rounded-xl border-2 sm:border-3 border-black pop-shadow animate-float-badge hover:rotate-0 transition-transform">
+                गोवा
+              </span>
             </span>
             <span
-              className={`font-serif-hh font-black text-3xl sm:text-7xl tracking-tight transition-colors ${
+              className={`font-serif-hh font-black text-3xl sm:text-7xl tracking-tight transition-colors animate-house-slide ${
                 isLight ? 'text-[#064423] drop-shadow-sm' : 'text-[#FFE600] drop-shadow-md'
               }`}
             >
@@ -154,7 +156,7 @@ export function App() {
               isLight ? 'text-slate-800' : 'text-slate-100'
             }`}
           >
-            Official <strong>Task #1 Shortlisting Generator</strong>. Create your authentic <strong>HH Goa 2026</strong> PFP Frame, Builder ID Card, or combined Squad Pass. 1-click Download & Share to X with{' '}
+            <strong>Task #1 Shortlisting Generator</strong>. Create your authentic <strong>HH Goa 2026</strong> PFP Frame, Builder ID Card, or combined Squad Pass. 1-click Download & Share to X with{' '}
             <span className="text-[#064423] bg-[#FFE600] px-1.5 py-0.5 rounded font-mono font-black border border-black inline-block">
               #FrameInGoa
             </span>{' '}
