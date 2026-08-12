@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-hh-green: #0a6c38;
+    --color-hh-darkgreen: #064423;
+    --color-hh-yellow: #FFE600;
+    --color-hh-pink: #FF007A;
+    --color-hh-lime: #D4FF00;
+    --color-hh-sand: #FFFBF0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-hh-green);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 50% 0%, #0e8446 0%, #0a6c38 60%, #064423 100%);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-serif-hh {
+    font-family: 'DM Serif Display', 'Playfair Display', serif;
+  }
+
+  .font-goa-hindi {
+    font-family: 'Rozha One', 'Yatra One', sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #064423;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFE600;
+  border-radius: 4px;
+  border: 2px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF007A;
+}
+
+/* Pop Art Neo-Brutalist Shadow Utilities */
+.pop-shadow {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.pop-shadow-lg {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.pop-shadow-pink {
+  box-shadow: 6px 6px 0px #FF007A;
+}
+
+.pop-shadow-yellow {
+  box-shadow: 6px 6px 0px #FFE600;
+}
+
+/* Custom Range Slider in Yellow/Black */
+input[type=range] {
+  -webkit-appearance: none;
+  background: #064423;
+  height: 8px;
+  border-radius: 4px;
+  border: 2px solid #000000;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFE600;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #000000;
+  border: 2px solid #000000;
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #FF007A;
+}
