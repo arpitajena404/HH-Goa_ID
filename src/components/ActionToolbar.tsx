@@ -120,7 +120,7 @@ export const ActionToolbar: React.FC<ActionToolbarProps> = ({
   };
 
   return (
-    <div className="w-full space-y-2.5 sm:space-y-3 pt-1 sm:pt-2">
+    <div className="w-full space-y-2.5 sm:space-y-3 pt-4 sm:pt-6">
       {/* 1-Click Action Buttons with Neo-Brutalist Pop Shadows */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
         {/* 1-Click Download High-Res */}

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import type { PhotoFilterId, PhotoTransform } from '../types';
-import { PHOTO_FILTERS, generateSampleAvatarSvg } from '../utils/presets';
-import { Upload, Image as ImageIcon, ZoomIn, Move, RotateCw, RefreshCw, Wand2 } from 'lucide-react';
+import { PHOTO_FILTERS } from '../utils/presets';
+import { Upload, Image as ImageIcon, ZoomIn, Move, RotateCw, RefreshCw } from 'lucide-react';
 import { soundManager } from '../utils/audio';
 
 interface PhotoUploaderProps {
@@ -9,7 +9,6 @@ interface PhotoUploaderProps {
   setPhotoUrl: (url: string) => void;
   transform: PhotoTransform;
   setTransform: React.Dispatch<React.SetStateAction<PhotoTransform>>;
-  name: string;
 }
 
 export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
@@ -17,7 +16,6 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
   setPhotoUrl,
   transform,
   setTransform,
-  name,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -74,12 +72,6 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
     }
   };
 
-  const handleSampleSelect = (hue: number, sampleName: string) => {
-    soundManager.playClick();
-    const svgUrl = generateSampleAvatarSvg(sampleName || name || 'HH', hue);
-    setPhotoUrl(svgUrl);
-    setTransform((prev) => ({ ...prev, panX: 0, panY: 0, zoom: 1, rotation: 0 }));
-  };
 
   const resetTransform = () => {
     soundManager.playClick();
@@ -155,29 +147,6 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
           </div>
         </div>
 
-        {/* Quick Instant Avatars */}
-        <div className="mt-2.5 sm:mt-3 flex items-center space-x-1.5 sm:space-x-2">
-          <span className="text-[10px] sm:text-[11px] font-mono text-[#FFE600] flex items-center shrink-0">
-            <Wand2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-[#FF007A]" />
-            Sample:
-          </span>
-          <div className="flex items-center space-x-1 sm:space-x-1.5 flex-wrap">
-            {[
-              { name: 'Hacker', fullName: 'Goa Hacker', hue: 140 },
-              { name: 'Beach', fullName: 'Beach Sun', hue: 45 },
-              { name: 'Retro', fullName: 'Pink Retro', hue: 320 },
-            ].map((s) => (
-              <button
-                key={s.name}
-                type="button"
-                onClick={() => handleSampleSelect(s.hue, s.fullName)}
-                className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold bg-[#064423] hover:bg-[#FFE600] text-white hover:text-black border border-black sm:border-2 pop-shadow transition cursor-pointer"
-              >
-                {s.name}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Adjustments: Zoom, Pan, Rotation, Filter */}

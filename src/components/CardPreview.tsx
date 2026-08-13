@@ -5,7 +5,7 @@ import {
   renderIdCardCanvas,
   renderTeamPassCanvas,
 } from '../utils/canvasRenderer';
-import { Circle, Square, Sparkles, RefreshCw, Eye } from 'lucide-react';
+import { Circle, Square, RefreshCw, Eye } from 'lucide-react';
 import { soundManager } from '../utils/audio';
 
 interface CardPreviewProps {
@@ -200,11 +200,7 @@ export const CardPreview: React.FC<CardPreviewProps> = ({
         </div>
       </div>
 
-      <p className="text-[10px] sm:text-xs font-mono font-bold text-[#FFE600] mt-2 sm:mt-3 flex items-center space-x-1.5 bg-[#064423] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-black pop-shadow">
-        <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FF007A]" />
-        <span className="hidden sm:inline">Move mouse over card for 3D tropical beach sheen</span>
-        <span className="sm:hidden">Official Hacker House Goa 2026 Pass</span>
-      </p>
+
     </div>
   );
 };

@@ -266,3 +266,18 @@ input[type=range]::-webkit-slider-thumb:hover {
   transform: scale(1.2);
   background: #FF007A;
 }
+
+/* Infinite gentle floating animation for the Goa badge */
+@keyframes floatGoaBadge {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float-badge {
+  animation: floatGoaBadge 5s ease-in-out infinite;
+}
+

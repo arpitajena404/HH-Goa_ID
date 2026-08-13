@@ -3,7 +3,6 @@ import type { AppMode, BuilderProfile, FramePreset, PhotoTransform, TeamProfile 
 import { FRAME_PRESETS, generateSampleAvatarSvg, getRandomBuilderClass, generateRandomHashId } from './utils/presets';
 import { Navbar } from './components/Navbar';
 import { ModeSelector } from './components/ModeSelector';
-import { PresetSelector } from './components/PresetSelector';
 import { PhotoUploader } from './components/PhotoUploader';
 import { BuilderForm } from './components/BuilderForm';
 import { TeamForm } from './components/TeamForm';
@@ -16,9 +15,9 @@ import { ExternalLink } from 'lucide-react';
 import './App.css';
 
 export function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme] = useState<'light' | 'dark'>('light');
   const [mode, setMode] = useState<AppMode>('id_card');
-  const [selectedPreset, setSelectedPreset] = useState<FramePreset>(FRAME_PRESETS[0]);
+  const [selectedPreset] = useState<FramePreset>(FRAME_PRESETS[0]);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [isHowToOpen, setIsHowToOpen] = useState<boolean>(false);
   const [isCircularMask, setIsCircularMask] = useState<boolean>(false);
@@ -114,14 +113,12 @@ export function App() {
         soundEnabled={soundEnabled}
         setSoundEnabled={setSoundEnabled}
         onOpenHowTo={() => setIsHowToOpen(true)}
-        theme={theme}
-        setTheme={setTheme}
       />
 
       {/* Main Container */}
-      <main className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10">
+      <main className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 pt-2 pb-4 sm:pt-3 sm:pb-6 lg:pt-4 lg:pb-8">
         {/* Authentic HH Goa Hero Header */}
-        <div className="text-center max-w-4xl mx-auto mb-4 sm:mb-8 space-y-2 sm:space-y-3">
+        <div className="text-center max-w-4xl mx-auto mb-3 sm:mb-6 pt-2 sm:pt-4 space-y-2 sm:space-y-3">
           <div className="inline-flex items-center space-x-1.5 sm:space-x-2 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#064423]/90 backdrop-blur-md text-white border-2 border-black pop-shadow text-[10px] sm:text-xs font-mono">
             <span className="text-[#FFE600] font-black">2:47 PM STUDIO</span>
             <span className="text-white">·</span>
@@ -150,18 +147,6 @@ export function App() {
               HOUSE
             </span>
           </div>
-
-          <p
-            className={`text-xs sm:text-base font-medium max-w-2xl mx-auto px-2 ${
-              isLight ? 'text-slate-800' : 'text-slate-100'
-            }`}
-          >
-            <strong>Task #1 Shortlisting Generator</strong>. Create your authentic <strong>HH Goa 2026</strong> PFP Frame, Builder ID Card, or combined Squad Pass. 1-click Download & Share to X with{' '}
-            <span className="text-[#064423] bg-[#FFE600] px-1.5 py-0.5 rounded font-mono font-black border border-black inline-block">
-              #FrameInGoa
-            </span>{' '}
-            to get featured on the Radar!
-          </p>
         </div>
 
         {/* Mode Selector (Format A, Format B, Team Pass) */}
@@ -198,13 +183,7 @@ export function App() {
 
           {/* Customization Forms (order-2 on mobile right below preview; order-1 / left column on laptop) */}
           <div className="order-2 lg:order-1 lg:col-span-6 space-y-4 sm:space-y-6 w-full min-w-0 text-white">
-            {/* Theme Preset Selector */}
-            <div className="p-3.5 sm:p-5 bg-[#064423]/85 backdrop-blur-xl border-3 sm:border-4 border-black/90 rounded-2xl sm:rounded-3xl pop-shadow-lg w-full min-w-0">
-              <PresetSelector
-                selectedPreset={selectedPreset}
-                onSelectPreset={setSelectedPreset}
-              />
-            </div>
+
 
             {/* Photo Upload & Adjustments */}
             {mode !== 'team_pass' && (
@@ -214,7 +193,6 @@ export function App() {
                   setPhotoUrl={setPhotoUrl}
                   transform={transform}
                   setTransform={setTransform}
-                  name={profile.name}
                 />
               </div>
             )}
@@ -230,28 +208,7 @@ export function App() {
           </div>
         </div>
 
-        {/* Unified Full-Width Directional Signpost Stats Strip (Ends at the exact same level across the entire page) */}
-        <div className="w-full mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 p-3 sm:p-4 bg-[#064423]/85 backdrop-blur-xl border-3 sm:border-4 border-black/90 rounded-2xl sm:rounded-3xl pop-shadow-lg text-center">
-          <div className="p-2 sm:p-3 bg-[#FFE600] text-black rounded-xl border-2 border-black pop-shadow hover:scale-[1.02] transition">
-            <span className="font-serif-hh font-black text-lg sm:text-2xl block">6800+</span>
-            <span className="text-[10px] sm:text-xs font-mono font-bold block text-slate-800">REGISTRATIONS</span>
-          </div>
 
-          <div className="p-2 sm:p-3 bg-[#FF007A] text-white rounded-xl border-2 border-black pop-shadow hover:scale-[1.02] transition">
-            <span className="font-serif-hh font-black text-lg sm:text-2xl block">390+</span>
-            <span className="text-[10px] sm:text-xs font-mono font-bold block text-slate-100">HACKERS</span>
-          </div>
-
-          <div className="p-2 sm:p-3 bg-[#FFE600] text-black rounded-xl border-2 border-black pop-shadow hover:scale-[1.02] transition">
-            <span className="font-serif-hh font-black text-lg sm:text-2xl block">100</span>
-            <span className="text-[10px] sm:text-xs font-mono font-bold block text-slate-800">PROJECTS</span>
-          </div>
-
-          <div className="p-2 sm:p-3 bg-[#FF007A] text-white rounded-xl border-2 border-black pop-shadow hover:scale-[1.02] transition">
-            <span className="font-serif-hh font-black text-lg sm:text-2xl block">$50K+</span>
-            <span className="text-[10px] sm:text-xs font-mono font-bold block text-slate-100">BOUNTIES '26</span>
-          </div>
-        </div>
       </main>
 
       {/* Footer */}
